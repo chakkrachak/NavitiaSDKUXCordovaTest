@@ -3,7 +3,7 @@
 # TRACING ON
 # set -x
 
-CordovaNavitiaSDK_ProjectName='CDVNavitiaSDKUX'
+CordovaNavitiaSDKUX_ProjectName='CDVNavitiaSDKUX'
 CordovaNavitiaSDK_LocalPath=$1
 
 # Utils
@@ -26,7 +26,7 @@ function ensureFolderExists {
 }
 
 function cleanWorkspace {
-    rm -rf ./$CordovaNavitiaSDK_ProjectName
+    rm -rf ./$CordovaNavitiaSDKUX_ProjectName
     git checkout . && git clean -fd
     rm -rf ./CordovaAppTest/platforms/ios/build/emulator/CordovaAppTest.app.dSYM
     rm ./CordovaAppTest/platforms/android/build/outputs/apk/android-debug.apk
@@ -34,7 +34,7 @@ function cleanWorkspace {
 
 # RETRIEVE NAVITIA SDK
 function retrieveNavitiaSDK_master {
-    git clone git@github.com:CanalTP/$CordovaNavitiaSDK_ProjectName.git
+    git clone git@github.com:CanalTP/$CordovaNavitiaSDKUX_ProjectName.git
 }
 
 # Script
@@ -44,7 +44,7 @@ cleanWorkspace
 ## RETRIEVE SDK
 if [ -z "$CordovaNavitiaSDK_LocalPath" ] ; then
     retrieveNavitiaSDK_master
-    CordovaNavitiaSDK_LocalPath=../$CordovaNavitiaSDK_ProjectName
+    CordovaNavitiaSDK_LocalPath=../$CordovaNavitiaSDKUX_ProjectName
 fi
 
 ## GO TO APP TEST FOLDER
