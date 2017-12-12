@@ -4,7 +4,7 @@
 # set -x
 
 CordovaNavitiaSDKUX_ProjectName='CDVNavitiaSDKUX'
-CordovaNavitiaSDK_LocalPath=$1
+CordovaNavitiaSDKUX_LocalPath=$1
 
 # Utils
 function ensureFileExists {
@@ -42,9 +42,9 @@ function retrieveNavitiaSDK_master {
 cleanWorkspace
 
 ## RETRIEVE SDK
-if [ -z "$CordovaNavitiaSDK_LocalPath" ] ; then
+if [ -z "$CordovaNavitiaSDKUX_LocalPath" ] ; then
     retrieveNavitiaSDK_master
-    CordovaNavitiaSDK_LocalPath=../$CordovaNavitiaSDKUX_ProjectName
+    CordovaNavitiaSDKUX_LocalPath=../$CordovaNavitiaSDKUX_ProjectName
 fi
 
 ## GO TO APP TEST FOLDER
@@ -52,7 +52,7 @@ cd CordovaAppTest
 
 ## INSTALL PLUGIN
 npm rebuild node-sass --force
-ionic cordova plugin add $CordovaNavitiaSDK_LocalPath
+ionic cordova plugin add $CordovaNavitiaSDKUX_LocalPath
 
 ## BUILD ANDROID
 ionic cordova platform add android
