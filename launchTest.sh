@@ -38,7 +38,8 @@ function retrieveNavitiaSDK_master {
 }
 
 # Script
-
+export ORG_GRADLE_PROJECT_cdvCompileSdkVersion=android-26
+export ORG_GRADLE_PROJECT_cdvBuildToolsVersion=26.0.1
 cleanWorkspace
 
 ## RETRIEVE SDK
