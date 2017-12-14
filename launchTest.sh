@@ -46,6 +46,7 @@ function buildAndroid {
 
 function buildIOS {
     ionic cordova platform add ios
+    ensureFileExists "./plugins/cordova-plugin-navitia-sdk-ux/Carthage/Build/iOS/NavitiaSDKUX.framework"
     ionic cordova build ios
     ensureFolderExists "./platforms/ios/build/emulator/CordovaAppTest.app.dSYM"
 }
