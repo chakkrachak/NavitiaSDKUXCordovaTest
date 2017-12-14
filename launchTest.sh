@@ -37,6 +37,19 @@ function retrieveNavitiaSDK_master {
     git clone git@github.com:CanalTP/$CordovaNavitiaSDKUX_ProjectName.git
 }
 
+# BUILD
+function buildAndroid {
+    ionic cordova platform add android
+    ionic cordova build android
+    ensureFileExists "./platforms/android/build/outputs/apk/android-debug.apk"
+}
+
+function buildIOS {
+    ionic cordova platform add ios
+    ionic cordova build ios
+    ensureFolderExists "./platforms/ios/build/emulator/CordovaAppTest.app.dSYM"
+}
+
 # Script
 export ORG_GRADLE_PROJECT_cdvCompileSdkVersion=android-26
 export ORG_GRADLE_PROJECT_cdvBuildToolsVersion=26.0.1
@@ -51,19 +64,11 @@ fi
 ## GO TO APP TEST FOLDER
 cd CordovaAppTest
 
-## INSTALL PLUGIN
+## Building
 npm rebuild node-sass --force
-ionic cordova plugin add $CordovaNavitiaSDKUX_LocalPath
+ensureFolderExists $CordovaNavitiaSDKUX_LocalPath
+ionic cordova plugin add $CordovaNavitiaSDKUX_LocalPath && buildAndroid && buildIOS
 
-## BUILD ANDROID
-ionic cordova platform add android
-ionic cordova build android
-ensureFileExists "./platforms/android/build/outputs/apk/android-debug.apk"
-
-## BUILD IOS
-ionic cordova platform add ios
-ionic cordova build ios
-ensureFolderExists "./platforms/ios/build/emulator/CordovaAppTest.app.dSYM"
 
 ## GO BACK TO MAIN FOLDER
 cd ..
