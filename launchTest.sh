@@ -40,15 +40,12 @@ function retrieveNavitiaSDK_master {
 # BUILD
 function buildAndroid {
     ionic cordova platform add android
-    ionic cordova build android
-    ensureFileExists "./platforms/android/build/outputs/apk/android-debug.apk"
+    ionic cordova build android && ensureFileExists "./platforms/android/build/outputs/apk/android-debug.apk"
 }
 
 function buildIOS {
-    ionic cordova platform add ios
-    ensureFolderExists "./plugins/cordova-plugin-navitia-sdk-ux/Carthage/Build/iOS/NavitiaSDKUX.framework"
-    ionic cordova build ios
-    ensureFolderExists "./platforms/ios/build/emulator/CordovaAppTest.app.dSYM"
+    ionic cordova platform add ios && ensureFolderExists "./plugins/cordova-plugin-navitia-sdk-ux/Carthage/Build/iOS/NavitiaSDKUX.framework"
+    ionic cordova build ios && ensureFolderExists "./platforms/ios/build/emulator/CordovaAppTest.app.dSYM"
 }
 
 # Script
