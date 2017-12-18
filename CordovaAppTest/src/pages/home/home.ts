@@ -8,25 +8,29 @@ declare var NavitiaSDKUX: any;
   templateUrl: 'home.html'
 })
 export class HomePage {
+  config;
 
   constructor(public navCtrl: NavController) {
-      var config = {
+      this.config = {
           token: '9e304161-bb97-4210-b13d-c71eaf58961c',
       };
 
-      NavitiaSDKUX.init(config, function() {}, function(error) {
+
+  }
+
+  launchJourney(ev) {
+      NavitiaSDKUX.init(this.config, function() {}, function(error) {
           console.log(error);
       });
 
       var journeyParams = {
-          initOrigin: 'My Home',
-          initOriginId: '2.3665844;48.8465337',
-          initDestinationId: '2.2979169;48.8848719',
+          originLabel: 'My Home',
+          originId: '2.3665844;48.8465337',
+          destinationId: '2.2979169;48.8848719',
       };
 
       NavitiaSDKUX.invokeJourneyResults(journeyParams, function() {}, function(error) {
           console.log(error);
       });
   }
-
 }
