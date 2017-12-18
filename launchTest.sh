@@ -68,7 +68,7 @@ cd CordovaAppTest
 ## Building
 npm rebuild node-sass --force
 ensureFolderExists $CordovaNavitiaSDKUX_LocalPath
-ionic cordova plugin add $CordovaNavitiaSDKUX_LocalPath && buildAndroid && buildIOS
+ionic cordova plugin add $CordovaNavitiaSDKUX_LocalPath --nofetch && buildAndroid && buildIOS
 
 
 ## GO BACK TO MAIN FOLDER
